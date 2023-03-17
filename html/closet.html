@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>the closet</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/closet.css">
+	<link rel="icon" href="../assets/img/heartreal.png">
+    <!--
+         _     _
+            (o\---/o)
+             ( , , )
+        ,~~._(_(T)_)_,~~.
+       |"--",-"-,-"-."--"|
+       |   (   hug   )   |
+hjw    |    ".  ?  ."    |
+`97    |  _,-."._.",-._  |
+       '-(ooO )---( Ooo)-'
+         ((_) )   ( (_))
+          "--"     "--"
+      -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      $("#mark").click(function(e){
+        e.preventDefault();
+        $("#info").toggleClass('hidden');
+      });
+    });
+  </script>
+
+    <script type="text/javascript">
+    $(function(){
+      $("#note").click(function(e){
+        e.preventDefault();
+        $("#nowPlaying").toggleClass('hidden');
+      });
+    });
+  </script>
+
+     <script type="text/javascript">
+$(document).ready(function() {
+    $('#close').click(function() {
+        $('#info').toggleClass("hidden");
+    });
+});
+</script>
+
+    <script type="text/javascript">
+$(document).ready(function() {
+    $('#close3').click(function() {
+        $('#nowPlaying').toggleClass('hidden');
+    });
+});
+  </script>
+
+</head>
+<body>
+<nav>
+   <div class="question"><img id="mark" src="../assets/img/question.png" width="70px"height="70px"></div>
+  <div id ="info" class="hidden">
+    <span id="close">(x)</span>
+    <p>
+    find your way out of the cage...
+  </p>
+  </div>
+  <div id="note"><img src="../assets/img/note2.png" width="80px" height="80px"></div>
+  <div id="nowPlaying" class="hidden">
+    <span id="close3">(x)</span>
+    <p>
+    <center>
+<audio src="../assets/tune/AnadolAyÇürüdü.mp3" loop autoplay controls>
+</audio>
+<div>Anadol ‎– Ay Çürüdü</div>
+</center>
+</p>
+</div>
+<div id="heartChain"><a id="no" href="../index.html"><img src="../assets/img/heart-chain.png" width="80px" height="80px"></a>
+<span id="home"><a href="../index.html">home</a> </span></div>
+</nav>
+<div class="faces">
+<div class="skin1"><img class="skin" src="../assets/img/face-1.png" width="200px" height="200px"></div>
+<div class="skin2"><img src="../assets/img/face-2.png" width="300px" height="300px"></div>
+<div class="skin3"><img src="../assets/img/face-3.png" width="400px" height="400px"></div>
+<div class="key"><a href="./hall.html"><img src="../assets/img/heart-key.png" width="50px" height="50px"></a></div>
+<div class="skin4"><img src="../assets/img/face-4.png" width="250px" height="250px"></div>
+</div>
+
+<div id="container"></div>
+
+<script type="module">
+
+   import * as THREE from '../js/build/three.module.js';
+    import {OrbitControls} from '../js/examples/jsm/controls/OrbitControls.js';
+
+      let camera, controls;
+      let renderer;
+      let scene;
+
+      init();
+      animate();
+
+      function init() {
+
+        const container = document.getElementById( 'container' );
+
+        renderer = new THREE.WebGLRenderer();
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        container.appendChild( renderer.domElement );
+
+        scene = new THREE.Scene();
+
+        camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 100 );
+        camera.position.z = 0.01;
+
+        controls = new OrbitControls( camera, renderer.domElement );
+        controls.enableZoom = false;
+        controls.enablePan = false;
+        controls.enableDamping = true;
+        controls.rotateSpeed = - 0.25;
+
+        const textures = getTexturesFromAtlasFile( "../assets/img/cubemap.png", 6 );
+
+        const materials = [];
+
+        for ( let i = 0; i < 6; i ++ ) {
+
+          materials.push( new THREE.MeshBasicMaterial( { map: textures[ i ] } ) );
+
+        }
+
+        const skyBox = new THREE.Mesh( new THREE.BoxBufferGeometry( 1, 1, 1 ), materials );
+        skyBox.geometry.scale( 1, 1, - 1 );
+        scene.add( skyBox );
+
+        window.addEventListener( 'resize', onWindowResize, false );
+
+      }
+
+      function getTexturesFromAtlasFile( atlasImgUrl, tilesNum ) {
+
+        const textures = [];
+
+        for ( let i = 0; i < tilesNum; i ++ ) {
+
+          textures[ i ] = new THREE.Texture();
+
+        }
+
+        const imageObj = new Image();
+
+        imageObj.onload = function () {
+
+          let canvas, context;
+          const tileWidth = imageObj.height;
+
+          for ( let i = 0; i < textures.length; i ++ ) {
+
+            canvas = document.createElement( 'canvas' );
+            context = canvas.getContext( '2d' );
+            canvas.height = tileWidth;
+            canvas.width = tileWidth;
+            context.drawImage( imageObj, tileWidth * i, 0, tileWidth, tileWidth, 0, 0, tileWidth, tileWidth );
+            textures[ i ].image = canvas;
+            textures[ i ].needsUpdate = true;
+
+          }
+
+        };
+
+        imageObj.src = atlasImgUrl;
+
+        return textures;
+
+      }
+
+      function onWindowResize() {
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize( window.innerWidth, window.innerHeight );
+
+      }
+
+      function animate() {
+
+        requestAnimationFrame( animate );
+
+        controls.update(); // required when damping is enabled
+
+        renderer.render( scene, camera );
+
+      }
+
+    </script>
+
+</body>
+</html>

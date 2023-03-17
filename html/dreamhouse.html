@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>the dreamhouse</title>
+	<meta charset="utf-8">
+  <link rel="icon" href="../assets/note.png">
+  <link rel="icon" href="../assets/img/heartreal.png">
+	<link rel="stylesheet" type="text/css" href="../css/dreamhouse.css">
+   <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- an ode to a moment experienced in the dreamhouse, 275 Church Street
+New York, NY 10013. I did not make these fractals, but maybe one day.
+
+        /  \./  \/\_
+  __{^\_ _}_   )  }/^\
+ /  /\_/^\._}_/  //  /
+(  (__{(@)}\__}.//_/__A____A_______A________A________A_____A___A___A______
+ \__/{/(_)\_}  )\\ \\---v-----V-----V---Y-----v----Y------v-----V-----v---
+   (   (__)_)_/  )\ \>
+    \__/     \__/\/\/
+       \__,--'
+-->
+
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      $("#mark").click(function(e){
+        e.preventDefault();
+        $("#info").toggleClass('hidden');
+      });
+    });
+</script>
+  <script type="text/javascript">
+    $(function(){
+      $("#note").click(function(e){
+        e.preventDefault();
+        $("#nowPlaying").toggleClass('hidden');
+      });
+    });
+    </script>
+    </script>
+     <script type="text/javascript">
+$(document).ready(function() {
+    $('#close').click(function() {
+        $('#info').toggleClass("hidden");
+    });
+});
+</script>
+    <script type="text/javascript">
+$(document).ready(function() {
+    $('#close3').click(function() {
+        $('#nowPlaying').toggleClass("hidden");
+    });
+});
+  </script>
+</head>
+<body>
+	<video playsinline autoplay muted loop>
+	<source src="../assets/vid/fractal.mp4" type="video/mp4">
+</video>
+	<nav>
+		<div class="back">
+			<a href="./hall.html"> <img id="left" src="../assets/img/arrow.png" width="100px" height="100px"> </a>
+		</div>
+	   <div class="question"><img id="mark" src="../assets/img/question.png" width="70px"height="70px">
+  <div id ="info" class="hidden">
+    <span id="close">(x)</span>
+    <p>
+    squeeze my hand anytime you think the sound changes.
+  </p>
+</div>
+</div>
+
+		<div class="fwd"><a href="./cakecrush.html"><img src="../assets/img/arrow.png"width="100px" height="100px"></a></div>
+	</nav>
+
+<div id="note"><img src="../assets/img/note2.png" width="80px" height="80px"></div>
+  <div id="nowPlaying" class="hidden">
+    <span id="close3">(x)</span>
+    <center>
+<audio src="../assets/tune/DreamHouse.mp3" loop autoplay controls>
+</audio>
+<div> sound from the dreamhouse - la monte young</div>
+</center>
+</div>
+<div id="glove" class="hand animate__animated animate__heartBeat"><img id="oracle" src="../assets/img/glove-no.png">
+<div id="spiral"><img src="../assets/img/spiral-1.png" width="300px" height="200px"></div>
+</div>
+<div class="touch"><p id="hold">
+times u tried 2 hold my hand:
+</p></div>
+    <script type="text/javascript">
+    let holdHand = document.querySelector(".hand");
+    let count = 0;
+    holdHand.addEventListener("click", function() {
+  count += 1;
+  console.log(count);
+  document.getElementById("hold").innerHTML = "times u tried 2 hold my hand:" +  " " + count;
+});
+    </script>
+    <script type="text/javascript">
+     "use strict";
+
+   var element =
+   document.getElementById("oracle");
+
+   element.addEventListener("click", function (e){
+    e.preventDefault;
+
+    element.classList.remove("animate__heartBeat");
+    void element.offsetWidth;
+    element.classList.add("animate__heartBeat");
+   }, false);
+
+
+</script>
+
+
+</body>
+</html>

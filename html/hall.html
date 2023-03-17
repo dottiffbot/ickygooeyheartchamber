@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>hallway</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/hall.css">
+	<link rel="icon" href="../assets/img/CANDLE.png">
+  <!--     ..
+           $. ,o$$$o.
+           $. $$$$$$$o.   ..
+          .$. $' $$$$$$ ,o''
+         .$'  $  '$$$$$,o'.,'   .oo'
+        .$'   $.   $$$$'  ,,  .o'.
+       .$'    '$o. 'O$ ..ooo''',oo'
+      .$'     .o$'  '$$''     ,,o'
+    .%$,,,,,ooO'      '      ,,o''
+  .$o.          ,o'   $o    ..oo'
+   ''O'''''''''','      $'$. .o'
+      '$        $       '$,'o' '
+      '$        $      .o $
+       '$       $       .$$
+        '$      $,     .o$$
+         '$     $.    ,o' $
+          $.    '$.   $,oooo''o,
+          $.     $.  'o'       '$
+          $.     $.     .,ooo,  $
+        .''      'oo...o'  $ 'o $
+                        $  $   ''
+                        $  $
+                        $  %
+                       ,$  $
+                       $  $'
+                        ''
+-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  <script type="text/javascript">
+    $(function(){
+      $("#mark").click(function(e){
+        e.preventDefault();
+        $("#info").toggleClass('hidden');
+      });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function(){
+      $("#note").click(function(e){
+        e.preventDefault();
+        $("#nowPlaying").toggleClass('hidden');
+      });
+    });
+  </script>
+      <script type="text/javascript">
+$(document).ready(function() {
+    $('#close').click(function() {
+        $('#info').toggleClass("hidden");
+    });
+});
+</script>
+    <script type="text/javascript">
+$(document).ready(function() {
+    $('#close3').click(function() {
+        $('#nowPlaying').toggleClass("hidden");
+    });
+});
+</script>
+</head>
+
+<body>
+<nav>
+  <div class="question"><img id="mark" src="../assets/img/question.png" width="70px"height="70px"></div>
+  <div id ="info" class="hidden">
+    <span id="close">(x)</span>
+    <p>
+  there is someone waiting for you at the end of this hallway.... swipe right.
+</p>
+  </div>
+
+<div class="back"><a href="./intro.html"><img id="left" src="../assets/img/arrow.png" width="100px" height="100px"></a>
+</div>
+
+<div id="note"><img src="../assets/img/note2.png" width="80px" height="80px"></div>
+<div id="nowPlaying" class="hidden">
+  <span id="close3">(x)</span>
+	<center>
+	<audio autoplay loop controls>
+	<source src="../assets/tune/NewSnow.mp3">
+</audio>
+	<p> new snow  - peter nothnagle</p>
+</center>
+</div>
+
+<div id="heartChain"><a href="../index.html"><img src="../assets/img/heart-chain.png" width="80px" height="80px"></a>
+<span id="home"><a href="../index.html">home</a></span></div>
+</nav>
+<!-- hall -->
+<div class="hall">
+
+<div class="clown"><a href="https://www.youtube.com/watch?v=NI6aOFI7hms" target="_blank"><img id="clown" src="../assets/img/clowninluv.png"></a></div>
+
+<div class="chair"><a href="../assets/img/9.JPG" target="_blank"><img id="chair"src="../assets/img/chair.png"></a></div>
+
+<div class="meat"><a href="./dreamhouse.html"><img id="meat" src="../assets/img/meat.png"></a></div>
+
+<div id="circle"><a href="../assets/vid/body.mp4" target="_blank"><img id="bodee"src="../assets/img/bodee.png"></a></div>
+
+<div class="chain"><a href="./closet.html"><img id="chain" src="../assets/img/chain_1.png"></a></div>
+<div id="adminReveal" onclick="play()"><img id="phone" src="../assets/img/newphone.png"></div>
+<audio id="audio" src="../assets/tune/joey.mp3"></audio>
+
+</div>
+  <script>
+      function play() {
+        var audio = document.getElementById("audio");
+        audio.play();
+      }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>welcome landing</title>
+	<link rel="icon" href="../assets/img/heartreal.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/intro.css">
+	<meta charset="utf-8">
+	<!-- 
+
+      _______________                          |*\_/*|________
+       |  ___________  |                        ||_/-\_|______  |
+       | |           | |                        | |           | |
+       | |   0   0   | |                        | |   0   0   | |
+       | |     -     | |       /~`~\/~`~\.      | |     -     | |
+       | |   \___/   | |      (  E-mail  )      | |   \___/   | |
+       | |___     ___| |      `\ Cuddle /       | |___________| |
+       |_____|\_/|_____|        `\    /'        |_______________|
+         _|__|/ \|_|_.............`\/'............._|________|_
+        / ********** \                            / ********** \
+      /  ************  \                        /  ************  \
+     --------------------                      --------------------
+
+
+
+I want this computer to feel like it is an oracle at the end of the room in a sky.-->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+		var phrases = ["do you want 2 fall in love", "have you ever been in love", "do you love me", "do you want 2 make love 2 me", "are you currently in love", "is love how you dreamt it", "will anyone ever love me","does love hurt", "is love icky", "is love worth it", "is love real", "will you ever love me", "are you ready for love", "is love ready for you", "do you love someone"];
+		function update(){
+			var randomNumber = Math.floor( Math.random() * phrases.length)
+			var randomPhrase = phrases[randomNumber];
+			$("#quest").html(randomPhrase);
+		}
+
+		update();
+
+		  setInterval(function() {
+                update();
+            }, 4000);
+	</script>
+
+	<script type="text/javascript">
+    $(function(){
+      $("#note").click(function(e){
+        e.preventDefault();
+        $("#nowPlaying").toggleClass('hidden');
+      });
+    });
+  </script>
+  	<script type="text/javascript">
+    $(function(){
+      $("#mark").click(function(e){
+        e.preventDefault();
+        $("#info").toggleClass('hidden');
+      });
+    });
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#close').click(function() {
+        $('#info').toggleClass("hidden");
+    });
+});
+</script>
+        <script type="text/javascript">
+$(document).ready(function() {
+    $('#close3').click(function() {
+        $('#nowPlaying').toggleClass("hidden");
+    });
+});
+  </script>
+</head>
+
+<body>
+	<video playsinline autoplay muted loop>
+	<source src="../assets/vid/Stars.mp4" type="video/mp4">
+</video>
+
+<nav>
+<div class="questionMark"><img id="mark" src="../assets/img/question.png" width="70px"height="70px"></div>
+<div id="info" class="hidden"><span id="close">(x)</span><p>ponder love with the <a href="https://www.youtube.com/watch?v=iZNdhuB3Lqo" target="_blank">computer oracle...</a></p></div>
+<div id="note"><img id="music" src="../assets/img/note2.png" width="80px" height="80px"></div>
+<div id="nowPlaying" class="hidden">
+	<span id="close3">(x)</span>
+	<center>
+	<audio autoplay loop controls>
+	<source src="../assets/tune/MarioPaintMusic-BGM3.mp3">
+</audio>
+	<p id="mario"> mario paint ost - bgm 3 </p>
+</center>
+</div>
+<div id="heartChain"><a id="no" href="../index.html"><img id="heart" src="../assets/img/heart-chain.png" width="80px" height="80px"></a>
+<span id="home"><a href="../index.html">home</a> </span></div>
+</nav>
+
+<div class="yes"><span id="yes"><a href="./hall.html">yes</a></span></div>
+	<div class="maybe">	<span id="maybe"><a href="./onmycomputer.html">maybe</a></span></div>
+	<div class="question">
+	<p id="quest">do you want 2 fall in love</p> <center><span id="qmark">?</span></center>
+	</div>
+
+
+<div class="scene">
+	<div class="room">
+		<div class=" face top"></div>
+		<div class=" face bottom"></div>
+		<div class=" face left"></div>
+		<div class=" face right"></div>
+		<div class=" face back computer"> <a href="../assets/vid/greenflag.mp4"target="_blank"><img id="oracle" src="../assets/img/ickycomputer.png"></a></div>
+	</div>
+</div>
+</body>
+</html>

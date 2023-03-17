@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Un-haunting</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/cakecrush.css">
+	<link rel="icon" href="../assets/img/heartreal.png">
+
+  <!--
+                                *
+                                                            *
+         *
+                                                  *
+             *
+                           *             *
+                                                     *
+      *                                                               *
+               *
+                               (             )
+                       )      (*)           (*)      (
+              *       (*)      |             |      (*)
+                       |      |~|           |~|      |          *
+                      |~|     | |           | |     |~|
+                      | |     | |           | |     | |
+                     ,| |a@@@@| |@@@@@@@@@@@| |@@@@a| |.
+                .,a@@@| |@@@@@| |@@@@@@@@@@@| |@@@@@| |@@@@a,.
+              ,a@@@@@@| |@@@@@@@@@@@@.@@@@@@@@@@@@@@| |@@@@@@@a,
+             a@@@@@@@@@@@@@@@@@@@@@' . `@@@@@@@@@@@@@@@@@@@@@@@@a
+             ;`@@@@@@@@@@@@@@@@@@'   .   `@@@@@@@@@@@@@@@@@@@@@';
+             ;@@@`@@@@@@@@@@@@@'     .     `@@@@@@@@@@@@@@@@'@@@;
+             ;@@@;,.aaaaaaaaaa       .       aaaaa,,aaaaaaa,;@@@;
+             ;;@;;;;@@@@@@@@;@      @.@      ;@@@;;;@@@@@@;;;;@@;
+             ;;;;;;;@@@@;@@;;@    @@ . @@    ;;@;;;;@@;@@@;;;;;;;
+             ;;;;;;;;@@;;;;;;;  @@   .   @@  ;;;;;;;;;;;@@;;;;@;;
+             ;;;;;;;;;;;;;;;;;@@     .     @@;;;;;;;;;;;;;;;;@@@;
+         ,%%%;;;;;;;;@;;;;;;;;       .       ;;;;;;;;;;;;;;;;@@;;%%%,
+      .%%%%%%;;;;;;;@@;;;;;;;;     ,%%%,     ;;;;;;;;;;;;;;;;;;;;%%%%%%,
+     .%%%%%%%;;;;;;;@@;;;;;;;;   ,%%%%%%%,   ;;;;;;;;;;;;;;;;;;;;%%%%%%%,
+     %%%%%%%%`;;;;;;;;;;;;;;;;  %%%%%%%%%%%  ;;;;;;;;;;;;;;;;;;;'%%%%%%%%
+     %%%%%%%%%%%%`;;;;;;;;;;;;,%%%%%%%%%%%%%,;;;;;;;;;;;;;;;'%%%%%%%%%%%%
+     `%%%%%%%%%%%%%%%%%,,,,,,,%%%%%%%%%%%%%%%,,,,,,,%%%%%%%%%%%%%%%%%%%%'
+       `%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
+           `%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
+                  """"""""""""""`,,,,,,,,,'"""""""""""""""""
+                                 `%%%%%%%'
+                                  `%%%%%'
+                                    %%%     
+                                   %%%%%
+                                .,%%%%%%%,.
+                           ,%%%%%%%%%%%%%%%%%%%,
+
+  -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+		<script type="text/javascript">
+    $(function(){
+      $("#note").click(function(e){
+        e.preventDefault();
+        $("#nowPlaying").toggleClass('hidden');
+      });
+    });
+  </script>
+  	<script type="text/javascript">
+    $(function(){
+      $("#mark").click(function(e){
+        e.preventDefault();
+        $("#info").toggleClass('hidden');
+      });
+    });
+</script>
+     <script type="text/javascript">
+$(document).ready(function() {
+    $('#close').click(function() {
+        $('#info').toggleClass("hidden");
+    });
+});
+</script>
+    <script type="text/javascript">
+$(document).ready(function() {
+    $('#close3').click(function() {
+        $('#nowPlaying').toggleClass("hidden");
+    });
+});
+  </script>
+</head>
+<body>
+		<header>
+		<div class="back">
+			<a href="./hall.html"> <img id="left" src="../assets/img/arrow.png" width="100px" height="100px"></a>
+		</div>
+	<div class="question"><img id="mark" src="../assets/img/question.png" alt=" big plastic yellow question mark" width="70px"height="70px">
+<div id="info" class="hidden"><span id="close">(x)</span><p>you've reached the end, but don't worry, you'll be okay. </p></div>
+</div>
+<div id="note"><img src="../assets/img/note2.png"alt="sweet teal music note" width="80px" height="80px"></div>
+<div id="nowPlaying" class="hidden">
+	<span id="close3">(x)</span>
+	<center>
+	<audio autoplay loop controls>
+	<source src="../assets/tune/Coldreams-Eyes.mp3">
+</audio>
+	<p> coldreams - eyes </p>
+</center>
+</div>
+
+		<div class="fwd"><a href="../index.html"><img src="../assets/img/arrow.png"width="100px" height="100px"></a></div>
+	</header>
+
+	<div class="cake"> <img id="cakee" src="../assets/img/cake-single.png"></div>
+
+
+</body>
+</html>

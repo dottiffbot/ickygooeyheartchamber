@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>chamber lobby</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./assets/img/heartreal.png">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+  <!--
+       |  \ \ | |/ /
+               |  |\ `' ' /
+               |  ;'aorta \      / , pulmonary
+               | ;    _,   |    / / ,  arteries
+      superior | |   (  `-.;_,-' '-' ,
+     vena cava | `,   `-._       _,-'_
+               |,-`.    `.)    ,<_,-'_, pulmonary
+              ,'    `.   /   ,'  `;-' _,  veins
+             ;        `./   /`,    \-'
+             | right   /   |  ;\   |\
+             | atrium ;_,._|_,  `, ' \
+             |        \    \ `       `,
+             `      __ `    \   left  ;,
+              \   ,'  `      \,  ventricle
+               \_(            ;,      ;;
+               |  \           `;,     ;;
+      inferior |  |`.          `;;,   ;'
+     vena cava |  |  `-.        ;;;;,;'
+               |  |    |`-.._  ,;;;;;'
+               |  |    |   | ``';;;'  FL
+                       aorta
+
+  -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      $("#mark").click(function(e){
+        e.preventDefault();
+        $("#info").toggleClass('hidden');
+      });
+    });
+  </script>
+  <script type="text/javascript">
+    $(function(){
+      $("#heartChain").click(function(e){
+        e.preventDefault();
+        $("#info2").toggleClass('hidden');
+      });
+    });
+  </script>
+    <script type="text/javascript">
+    $(function(){
+      $("#note").click(function(e){
+        e.preventDefault();
+        $("#nowPlaying").toggleClass('hidden');
+      });
+    });
+  </script>
+    <script type="text/javascript">
+$(document).ready(function() {
+    $('#close').click(function() {
+        $('#info').toggleClass("hidden");
+    });
+});
+</script>
+    <script type="text/javascript">
+$(document).ready(function() {
+    $('#close2').click(function() {
+        $('#info2').toggleClass("hidden");
+    });
+});
+</script>
+    <script type="text/javascript">
+$(document).ready(function() {
+    $('#close3').click(function() {
+        $('#nowPlaying').toggleClass("hidden");
+    });
+});
+</script>
+</head>
+
+<body>
+  <nav>
+  <div class="question"><img id="mark" src="./assets/img/question.png" width="70px"height="70px"></div>
+
+  <div id ="info" class="hidden">
+    <span id="close"> (x) </span>
+<p>hello, and welcome to the lobby of the <br><span id="icky">♥.·:¨icky gooey heart¨:·.♥</span> <br> <br>
+for an optimal experience, turning on your device’s sound is recommended,<img src="./assets/img/note2.png" width="20px" height="20px" style="display: inline;">in addition to dialing in your curiousity. It is advisable to view this site on a desktop computer. 
+<br>
+In some chambers, such as this one, you are able to orbit around the full space by clicking and dragging with your mouse.
+<br> 
+<br>
+<img src="./assets/img/arrow.png" width="30px" height="30px" style="display: inline;"><span style="font-family: cursive;"><mark>! please enter through the dungeon door. ! </mark></span><img src="./assets/img/arrow.png" width="30px" height="30px" style="display: inline; transform:rotate(0.5turn);">
+<br>
+<br>
+consult the big yellow question mark <img src="./assets/img/question.png" alt="big plastic yellow question mark" width="20px" height="20px" style="display: inline;"> for tips.
+<br>
+happy browsing!
+</p>
+  </div>
+  <div id="note"><img src="./assets/img/note2.png" alt="cool teal blue music note" width="80px" height="80px"></div>
+  <div id="nowPlaying" class="hidden">
+    <span id="close3">(x)</span>
+    <p>
+    <center>
+<audio src="./assets/tune/SunElectricLove2Love.mp3" loop autoplay controls>
+</audio>
+<div>Love 2 Love - Sun Electric</div>
+</center>
+</p>
+</div>
+<div id="heartChain"><img src="./assets/img/heart-chain.png" width="80px" height="80px"></div>
+<div id="info2" class="hidden">
+  <span id="close2">(x)</span>
+  <p> this website was made by<a href="https://teeaze.world"> tee topor</a> as apart of <a href="https://fruitful.school/">fruitful school,</a> fall 2020,<span><a style="color:red;"href="http://teeangel.cloud/"> post-heartbreak</a> </span>amidst quarentine isolation. they are thinking alot about<a href="https://en.wikipedia.org/wiki/Limerence" target="_blank"><em> limerence</em></a> and<a href="https://en.wikipedia.org/wiki/Body_without_organs" target="_blank"> <em>the body without organs</em></a>. thank you for visiting this site, I love you.</p>
+</div>
+</nav>
+  <div class="skybox">
+</div>
+  <div class="door">
+  <section id="door"><a href="./html/intro.html"><img id="dork" src="./assets/img/doork.png"></a>
+    </section>
+  </div>
+
+  <script type="module">
+     import * as THREE from './js/build/three.module.js';
+      import {OrbitControls} from './js/examples/jsm/controls/OrbitControls.js';
+
+      var camera, scene, renderer;
+      var mesh;
+
+  const loader = new THREE.TextureLoader();
+  const texture = loader.load(
+    './assets/img/mysteriousskin0086.png',
+    () => {
+      const rt = new THREE.WebGLCubeRenderTarget(texture.image.height);
+      rt.fromEquirectangularTexture(renderer, texture);
+      scene.background = rt;
+    });
+
+      init();
+      animate();
+
+      function init() {
+        camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000 );
+        camera.position.z = 400;
+
+        scene = new THREE.Scene();
+
+        renderer = new THREE.WebGLRenderer( { antialias: true } );
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        document.body.appendChild( renderer.domElement );
+        window.addEventListener( 'resize', onWindowResize, false );
+
+        const controls = new OrbitControls( camera, renderer.domElement );
+        
+      }
+
+      function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+      }
+
+      function animate() {
+        requestAnimationFrame( animate );
+        renderer.render( scene, camera );
+      }
+  </script>
+
+</body>
+</html>

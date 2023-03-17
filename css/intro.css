@@ -1,0 +1,409 @@
+
+/* code adapted from this tutorial: https://3dtransforms.desandro.com/perspective; */
+
+
+@font-face{
+	font-family: 'Norm';
+	src: url(../assets/fonts/Norm-Regular.otf);
+}
+
+@font-face{
+	font-family: 'terminal';
+	src:url(../assets/fonts/terminal-grotesque_open.otf);
+}
+
+*{
+	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+     width: 0 !important;
+}
+
+
+
+img{
+	display: block;
+	max-width: 100%;
+}
+nav{
+	z-index: 4;
+	margin-top: 1rem;
+}
+p{
+	padding: 0.5em;
+	margin: 0;
+}
+
+.questionMark{
+	right: 2rem;
+	top: 10px;
+	position: fixed;
+	cursor: grab;
+}
+
+#note{
+	position: fixed;
+	right: 2rem;
+	top: 100px;
+	cursor: grab;
+}
+
+#heartChain{
+	position: fixed;
+	right: 2rem;
+	top: 200px;
+	cursor: grab;
+}
+
+#home{
+	position: absolute;
+	color: white;
+	font-family: monospace;
+	font-size: 2rem;
+	letter-spacing: 0.4rem;
+	transform: rotate(-45deg);
+	top: 20px;
+	opacity: 0;
+}
+
+#home:hover{
+	opacity: 1;
+	transition: 2s ease;
+}
+
+
+.questionMark:hover, #heartChain:hover,#note:hover{
+	transform: scale(1.5);
+	cursor: grabbing;
+}
+
+
+#nowPlaying, #info{
+  font-family: monospace;
+  color: #757AD1;
+  background-color: black;
+  position: absolute;
+  overflow-y: scroll;
+  border-radius: 50px;
+  border-style: solid;
+  z-index: 4;
+  box-shadow: 0 0 20px 5px purple;
+}
+
+#nowPlaying{
+  right:130px;
+  top: 90px;
+  width: 300px;
+  padding: 1rem;
+
+}
+
+
+audio{
+	width: 200px;
+	height: 60px;
+	margin-bottom: 0.5rem;
+	padding-top: 1em;
+	display: inline-block;
+}
+
+#info{
+  right:120px;
+  top: 4px;
+  width: 250px;
+  padding: 1rem;
+
+}
+
+
+.hidden{
+	display: none;
+}
+
+#close, #close3{
+	display:inline-block;
+	position: absolute;
+	font-family:terminal;
+	font-size: 1.25em;
+   -webkit-text-stroke: 0.75px yellow;
+    color: transparent;
+	padding: 2px;
+	right: 1em;
+	top: 0.75em;
+}
+
+#close:hover,
+#close3:hover{
+	color: pink;
+	-webkit-text-stroke: 1px transparent;
+	transform:rotateZ(360deg);
+	transform-origin: center;
+	transition: 2s ease;
+	cursor: alias;
+}
+
+#oracle{
+	filter: drop-shadow(0 0 20px #B6C144);
+}
+.computer{
+width: 250px;
+height: auto;
+z-index: -500;
+margin: 0 auto;
+}
+
+@keyframes changePerspective{
+0% {transform: perspective(100px);
+	}
+50%{transform: perspective(8000px);}
+
+75%{transform: translateZ(-100px) rotateX(0deg) rotateY(0deg);}
+100%{transform: translateZ(-100px) rotateX(360deg) rotateY(360deg);}
+
+}
+
+@keyframes text{
+	0% {opacity: 0};
+	100%{opacity: 1};
+
+}
+
+.scene{
+	width:600px;
+	height:600px;
+	perspective: 8000px;
+	/* the lower the number, the farther the vanishing point */
+	margin: 0 auto;
+	padding-top: 3rem;
+
+}
+
+.room{
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	animation: changePerspective 16s ease-in-out;
+}
+
+.face{
+	position: absolute;
+	width: 600px;
+	height: 600px;
+} 
+
+.top {
+transform: rotateX(90deg) translateZ(300px);
+background: #5E74C9;
+filter: opacity(0.5);
+
+}
+
+.bottom{
+	transform: rotateX(-90deg) translateZ(300px);
+	background:#5E74C9;
+	filter: opacity(0.5);
+
+}
+
+.left{
+background:#8BCC66;
+filter: opacity(0.5);
+transform:rotateY(-90deg) translateZ(300px);
+
+}
+
+.right{
+	transform:rotateY(90deg) translateZ(300px);
+background:#8BCC66;
+filter: opacity(0.5);
+
+}
+
+.back{
+	transform: rotateY(180deg) translateZ(300px);
+	background:green;
+	filter: opacity(0.7);
+
+}
+
+.question{
+	font-family: Norm;
+	font-size: 2rem;
+	color: yellow;
+	position: absolute;
+	top: 50%;
+	margin: 0 auto;
+	z-index: 500;
+	animation: text 18s ease-in-out;
+}
+
+#qmark{
+	font-family: monospace;
+	font-size: 3rem;
+}
+
+#yes, #maybe{
+	padding: 1rem;
+	background-color: #8BCC66;
+	border-radius: 50%;
+	font-size: 1rem;
+	font-family: monospace;
+	animation: text 18s ease-in-out;
+	z-index: 4;
+}
+
+
+.yes{
+display: flex;
+justify-content: center;
+position: fixed;
+	top: 50%;
+	left: 15%;
+z-index: 4;
+margin: 0;
+}
+
+.maybe{
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	top: 50%;
+	right: 15%;
+	z-index: 4;
+	margin: 0;
+}
+a{
+	text-decoration: none;
+	color: #757AD1;
+	cursor: pointer;
+}
+
+a:hover{
+	text-decoration: underline teal;
+}
+
+#no:hover{
+text-decoration: none;
+filter: drop-shadow(1 1 2px purple);
+}
+#mario{
+	margin: 0;
+}
+
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* media query time */
+
+@media only screen and (max-width: 675px){
+
+	body, html {
+		overflow: hidden;
+	}
+ #yes{
+ 	font-size: 0.5rem;
+
+ }
+
+ #maybe{
+ 	font-size: 0.5rem;
+ }
+.yes{
+	margin-top: 60%;
+}
+
+ .maybe{
+ margin-top: 60%;
+
+ }
+
+ .question{
+ 	font-size: 1.75rem;
+ 	margin: 2rem;
+ 	top: 60%;
+ }
+
+#music{
+	width: 60px;
+	height: 60px;
+}
+#mark{
+	width: 60px;
+	height: 60px;
+}
+
+#heart{
+	width: 60px;
+	height: 60px;
+}
+#nowPlaying, #info{
+	right: 1em;
+}
+
+ .questionMark, #note, #heartChain{
+	right: 0.5em;
+}
+
+.scene{
+	width: 300px;
+	height: 400px;
+}
+
+.face{
+	width: 300px;
+	height: 300px;
+}
+.top {
+transform: rotateX(90deg) translateZ(150px);
+background: #5E74C9;
+filter: opacity(0.5);
+
+}
+
+.bottom{
+	transform: rotateX(-90deg) translateZ(150px);
+	background:#5E74C9;
+	filter: opacity(0.5);
+
+}
+
+.left{
+background:#8BCC66;
+filter: opacity(0.5);
+transform:rotateY(-90deg) translateZ(150px);
+
+}
+
+.right{
+	transform:rotateY(90deg) translateZ(150px);
+background:#8BCC66;
+filter: opacity(0.5);
+
+}
+
+.back{
+	transform: rotateY(180deg) translateZ(150px);
+	background:green;
+	filter: opacity(0.7);
+
+}
+
+
+}

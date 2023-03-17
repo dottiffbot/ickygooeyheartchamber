@@ -1,0 +1,304 @@
+*{
+	box-sizing: border-box;
+}
+@font-face{
+	font-family: 'terminal';
+	src:url(../assets/fonts/terminal-grotesque_open.otf);
+}
+
+body, html{
+	margin: 0;
+	padding: 0;
+	overflow-y: hidden;
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
+	background-color: black;
+	cursor:url(../assets/candlecur.png), auto !important;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+     width: 0 !important;
+}
+
+
+
+.hall{
+display: flex;
+margin: 2rem;
+perspective: 800px;
+max-width: 100vw;
+height: 100vh;
+}
+
+/* nav icons */
+
+#mark{
+	position: absolute;
+	top: 2rem;
+	right: 3rem;
+	cursor: pointer;
+	z-index: 2;
+}
+
+#note{
+	position: absolute;
+	bottom: 3em;
+	right: 3rem;
+	cursor: pointer;
+	z-index: 2;
+}
+#nowPlaying{
+	bottom: 3em;
+	right: 10em;
+  
+}
+audio{
+	width: 200px;
+	height: 50px;
+	padding-top: 1em;
+	display: inline-block;
+}
+
+/* pop outs */
+
+.hidden{
+	display: none;
+}
+
+#info, #nowPlaying{
+  font-family: monospace;
+  color: green;
+  background-color: black;
+  margin: 1rem;
+  padding: 2rem;
+  position: absolute;
+  border-radius: 50px;
+  border-style: solid;
+  z-index: 4;
+  box-shadow: 0 0 20px 5px green;
+
+}
+
+#info{
+top: 4px;
+right: 10%;
+}
+
+}
+.back{
+	padding: 10px;
+	cursor: pointer;
+}
+#left{
+transform: rotate(0.5turn);
+position: absolute;
+z-index: 2;
+
+
+}
+
+#mark:hover, #heartChain:hover, #note:hover{
+	transform: scale(1.5);
+}
+
+p{
+	padding: 0.5em;
+	margin: 0;
+}
+
+/*close*/
+
+#close,#close3{
+	display:inline-block;
+	position: absolute;
+	font-family:terminal;
+	font-size: 1.5em;
+   -webkit-text-stroke: 0.75px yellow;
+    color: transparent;
+	padding: 2px;
+	right: 1em;
+	top: 0.75em;
+}
+
+#close:hover,
+#close3:hover{
+	color: pink;
+	-webkit-text-stroke: 1px transparent;
+	transform:rotateZ(360deg);
+	transform-origin: center;
+	transition: 2s ease;
+	cursor: alias;
+}
+
+/*home button */
+
+#heartChain{
+	position: fixed;
+	cursor: pointer;
+	left: 3rem;
+	bottom: 3em;
+	z-index: 2;
+	cursor: pointer;
+}
+
+
+#home{
+	position: absolute;
+	color: white;
+	font-family: monospace;
+	font-size: 1.5rem;
+	letter-spacing: 0.4rem;
+	transform: rotate(-45deg);
+	opacity: 0;
+	left: 1em;
+     top:1em;
+	z-index: 2;
+	cursor: pointer;
+}
+
+#home:hover{
+	opacity: 1;
+	transition: 2s ease;
+}
+
+
+/* animation block */
+
+@keyframes floaty{
+	0% {transform: translateX(0px);}
+	100%{transform: translateX(1000px);}
+}
+
+@keyframes up{
+	0%{transform: translateY(0px);}
+	50%{transform: translateY(70vh);}
+	100%{transform: translateY(-100px);}
+}
+
+	@keyframes boop{
+		0%{ transform: translateX(0px)translateY(0px);}
+		50%{transform: translateX(-800px) translateY(100px);}
+		100%{transform: translateX(800px)translateY(-100px);}
+	}
+
+	@keyframes chee{
+		0%{transform: translateX(0) translateY(0px);}
+		50%{transform: translateX(5px) translateY(50vh);}
+		100%{transform: translateX(-1000px) translateY(-100px);}
+	}
+
+	@keyframes bobby{
+		0%{transform: translateX(0);}
+		50%{transform: translateX(-1000px)rotateZ(180deg);}
+		100%{transform: translateX(800px);}
+	}
+
+/* floating freakies */
+
+#clown{
+	x-index:-100;
+	height: 300px;
+	border-radius: 40%;
+	background-color: red;
+	filter: blur(80px);
+	transition:2s ease;
+	transform-style: preserve-3d;
+	animation: floaty 10s ease-in infinite;
+	width: max-width;
+}
+
+#clown:hover{
+	filter: blur(0);
+	background-color: transparent;
+}
+
+
+#meat{
+	width: 400px;
+	transform: rotateZ(60deg);
+	border-radius: 50%;
+	background-color: blue;
+	filter: blur(80px);
+	z-index: -50;
+	transition: 2s ease;
+	animation: boop 10s ease-in infinite;
+}
+
+#meat:hover{
+	filter: blur(0);
+	background-color: transparent;
+}
+
+
+#chair{
+	height: 500px;
+	border-radius: 50%;
+	background-color: green;
+	filter: blur(80px);
+	z-index: -50;
+	transition: 2s ease;
+	animation: up 5s ease-out infinite;
+
+}
+
+#phone{
+	height: 500px;
+	animation: up 5s ease-in-out infinite;
+	animation-direction: alternate;
+
+}
+
+#chair:hover{
+	filter: blur(0);
+	background-color: transparent;
+}
+
+#circle{
+	height: 500px;
+	width: 500px;
+	border-radius: 25%;
+	background-color: yellow;
+	padding: 1rem;
+	filter:blur(80px);
+	transition: 2s ease;
+	animation: chee 10s ease-out infinite;
+}
+
+#circle:hover{
+	filter: blur(0);
+	background-color: transparent;
+}
+
+#bodee{
+	height: 500px;
+}
+
+#chain{
+	height: 300px;
+	border-radius: 25%;
+	background-color: purple;
+	filter: blur(80px);
+	animation: bobby 10s ease-in-out infinite;
+}
+#chain:hover{
+	filter: blur(0);
+	background-color: transparent;
+}
+/* media query time */
+
+@media only screen and (max-width: 675px){
+	#mark, #note{
+		right: 1rem;
+	}
+
+	#heartChain{
+		left: 1rem;
+	}
+	#nowPlaying{
+		right: 2em;
+
+	}
+
+
+}
